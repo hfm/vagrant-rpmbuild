@@ -25,9 +25,11 @@ curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL -L "http://ftp.jaist.ac.jp/pub/Linux/F
 rpm -ivh "http://ftp.jaist.ac.jp/pub/Linux/Fedora/epel/$osmajor/$osarch/$epel"
 
 # puppet
-curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs -L "http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs"
-rpm -ivh "https://yum.puppetlabs.com/el/$osmajor/products/$osarch/puppetlabs-release-$osmajor-10.noarch.rpm"
+if [ $osmajor != 4 ]; then
+    curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs -L 'http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs'
+    rpm -ivh "https://yum.puppetlabs.com/el/$osmajor/products/$osarch/puppetlabs-release-$osmajor-10.noarch.rpm"
+fi
 yum install -y puppet
 
 # chef
-curl -kL https://www.opscode.com/chef/install.sh | bash
+curl -kL 'https://www.opscode.com/chef/install.sh' | bash

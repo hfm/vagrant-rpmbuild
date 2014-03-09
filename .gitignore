@@ -1,0 +1,7 @@
+centos6.5-x86_64-rpmbuild.box
+packer_cache/
+### https://raw.github.com/github/gitignore/master/Global/vagrant.gitignore
+
+.vagrant/
+
+

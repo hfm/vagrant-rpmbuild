@@ -39,7 +39,7 @@
     {
       "type": "vagrant",
       "compression_level": 9,
-      "output": "builds/{{.BuildName}}.box"
+      "output": "builds/centos6.5-i386-rpmbuild.box"
     }
   ]
 }

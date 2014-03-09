@@ -20,13 +20,19 @@ case $osmajor in
 esac
 
 # epel
-curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL -L "http://ftp.jaist.ac.jp/pub/Linux/Fedora/epel/RPM-GPG-KEY-EPEL-$osmajor"
-rpm -ivh "http://ftp.jaist.ac.jp/pub/Linux/Fedora/epel/$osmajor/$osarch/$epel"
+curl -OL 'http://ftp.jaist.ac.jp/pub/Linux/Fedora/epel/RPM-GPG-KEY-EPEL'
+rpm --import -v 'RPM-GPG-KEY-EPEL'
+curl -OL "http://ftp.jaist.ac.jp/pub/Linux/Fedora/epel/$osmajor/$osarch/$epel"
+rpm -K $epel
+rpm -ivh $epel
 
 # puppet
 if [ $osmajor != 4 ]; then
-    curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs -L 'http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs'
-    rpm -ivh "https://yum.puppetlabs.com/el/$osmajor/products/$osarch/puppetlabs-release-$osmajor-10.noarch.rpm"
+    curl -OL 'http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs'
+    rpm --import -v 'RPM-GPG-KEY-puppetlabs'
+    curl -OL "https://yum.puppetlabs.com/el/$osmajor/products/$osarch/puppetlabs-release-$osmajor-10.noarch.rpm"
+    rpm -K "puppetlabs-release-$osmajor-10.noarch.rpm"
+    rpm -ivh "puppetlabs-release-$osmajor-10.noarch.rpm"
 fi
 yum install -y puppet
 

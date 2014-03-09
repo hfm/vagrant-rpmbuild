@@ -6,6 +6,7 @@
         "scripts/vagrant.sh",
         "scripts/package.sh",
         "scripts/rpmbuild.sh",
+        "scripts/srpm.sh",
         "scripts/virtualbox.sh",
         "scripts/cleanup.sh"
       ],

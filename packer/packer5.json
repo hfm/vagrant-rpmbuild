@@ -3,11 +3,12 @@
     {
       "type": "shell",
       "scripts": [
-        "vagrant.sh",
-        "package.sh",
-        "rpmbuild.sh",
-        "virtualbox.sh",
-        "cleanup.sh"
+        "scripts/vagrant.sh",
+        "scripts/package.sh",
+        "scripts/rpmbuild.sh",
+        "scripts/srpm.sh",
+        "scripts/virtualbox.sh",
+        "scripts/cleanup.sh"
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
     }
@@ -16,16 +17,16 @@
     {
       "type": "vagrant",
       "compression_level": 9,
-      "output": "centos6.5-x86_64-rpmbuild.box"
+      "output": "builds/centos5.10-x86_64-rpmbuild.box"
     }
   ],
   "builders": [
     {
-      "vm_name": "centos6.5-x86_64-rpmbuild",
+      "vm_name": "centos5.10-x86_64-rpmbuild",
       "guest_os_type": "RedHat_64",
       "iso_checksum_type": "md5",
-      "iso_checksum": "83221db52687c7b857e65bfe60787838",
-      "iso_url": "http://ftp.riken.jp/Linux/centos/6.5/isos/x86_64/CentOS-6.5-x86_64-bin-DVD1.iso",
+      "iso_checksum": "715f7355074c00530cd6ee1d9f43cc3f",
+      "iso_url": "http://ftp.riken.jp/Linux/centos/5.10/isos/x86_64/CentOS-5.10-x86_64-bin-DVD-1of2.iso",
       "type": "virtualbox-iso",
       "ssh_password": "vagrant",
       "ssh_username": "vagrant",
@@ -33,11 +34,11 @@
       "disk_size": 50000,
       "vboxmanage": [
         [ "modifyvm", "{{.Name}}", "--memory", "1024" ],
-        [ "modifyvm", "{{.Name}}", "--cpus",   "2"    ]
+        [ "modifyvm", "{{.Name}}", "--cpus",   "1"    ]
       ],
-      "http_directory": ".",
+      "http_directory": "http",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks5.cfg<enter>"
       ],
       "boot_wait": "10s",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p"

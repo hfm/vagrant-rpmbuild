@@ -33,9 +33,9 @@
       "disk_size": 50000,
       "vboxmanage": [
         [ "modifyvm", "{{.Name}}", "--memory", "1024" ],
-        [ "modifyvm", "{{.Name}}", "--cpus",   "2"    ]
+        [ "modifyvm", "{{.Name}}", "--cpus",   "1"    ]
       ],
-      "http_directory": ".",
+      "http_directory": "http",
       "boot_command": [
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter>"
       ],

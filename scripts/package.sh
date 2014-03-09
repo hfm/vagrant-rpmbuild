@@ -26,7 +26,7 @@ rpm -ivh "http://ftp.jaist.ac.jp/pub/Linux/Fedora/epel/$osmajor/$osarch/$epel"
 
 # puppet
 curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs -L "http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs"
-rpm -ivh "https://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-10.noarch.rpm"
+rpm -ivh "https://yum.puppetlabs.com/el/$osmajor/products/$osarch/puppetlabs-release-$osmajor-10.noarch.rpm"
 yum install -y puppet
 
 # chef

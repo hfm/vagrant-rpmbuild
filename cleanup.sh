@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh
 
 yum -y clean all
 

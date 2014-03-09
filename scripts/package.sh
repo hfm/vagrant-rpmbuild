@@ -36,6 +36,4 @@ if [ $osmajor != 4 ]; then
 fi
 yum install -y puppet
 
-# chef
-curl -kL 'https://www.opscode.com/chef/install.sh' | bash
 yum update -y

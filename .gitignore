@@ -5,3 +5,5 @@ packer_cache/
 .vagrant/
 
 
+.bundle/
+Gemfile.lock

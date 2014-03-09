@@ -3,11 +3,11 @@
     {
       "type": "shell",
       "scripts": [
-        "vagrant.sh",
-        "package.sh",
-        "rpmbuild.sh",
-        "virtualbox.sh",
-        "cleanup.sh"
+        "scripts/vagrant.sh",
+        "scripts/package.sh",
+        "scripts/rpmbuild.sh",
+        "scripts/virtualbox.sh",
+        "scripts/cleanup.sh"
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
     }
@@ -16,7 +16,7 @@
     {
       "type": "vagrant",
       "compression_level": 9,
-      "output": "centos6.5-x86_64-rpmbuild.box"
+      "output": "builds/centos6.5-x86_64-rpmbuild.box"
     }
   ],
   "builders": [
@@ -37,7 +37,7 @@
       ],
       "http_directory": "http",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks6.cfg<enter>"
       ],
       "boot_wait": "10s",
       "shutdown_command": "echo 'vagrant' | sudo -S /sbin/halt -h -p"

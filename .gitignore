@@ -7,3 +7,4 @@ packer_cache/
 
 .bundle/
 Gemfile.lock
+*.box

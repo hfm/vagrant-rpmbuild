@@ -5,7 +5,6 @@ set -e
 osarch=`uname -i`
 osmajor=$(cut -f3 -d' ' /etc/redhat-release | cut -f1 -d'.')
 
-epel='epel-release-6-8.noarch.rpm'
 case $osmajor in
     4)
         epel='epel-release-4-10.noarch.rpm'
